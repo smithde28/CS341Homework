@@ -1,3 +1,6 @@
+// CS341 Homework
+// Created by Derric Smith (Some code created by Martin Cenek)
+
 eventHandler = submission(event)
 {
   /* do stuff */
