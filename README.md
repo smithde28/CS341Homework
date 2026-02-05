@@ -1,1 +1,1 @@
-# CS341Homework
+This is for Software Engineering homework.
