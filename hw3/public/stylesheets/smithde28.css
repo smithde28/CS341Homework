@@ -1,0 +1,77 @@
+/* CSS file for HTML Cheesecake, Created by Derric Smith */
+
+/* Changes entire page */
+body {
+  background-color: black;
+}
+
+/* Changes "Quantity Topping" */
+p {
+  color: white;
+}
+
+/* Changes heading at the top of the page */
+h1 {
+  background-color: gray;
+  color: orange;
+}
+
+/* Changes topping choice */
+form {
+  color: lightcoral;
+  font-family: 'Arial', sans-seriff;
+}
+
+/* Changes "Total Orders Last Month" */
+h3 {
+  color: lightblue;
+}
+
+/* Changes list of orders */
+ul {
+  color: lightblue;
+  font-family: 'Courier New', monospace;
+}
+
+#monthWidget {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Current month */
+#currentMonth {
+  background-color: gray;
+  color: yellow;
+  padding: 3px 6px;
+  cursor: pointer;
+}
+
+/* Month dropdown menu */
+#monthMenu {
+  display: none;
+  position: absolute;
+  background-color: black;
+  border: 1px solid gray;
+  max-height: 80px;
+  width: 70px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+/* Individual month option */
+.month {
+  padding: 5px;
+  color: lightblue;
+}
+
+/* Hover */
+.month:hover {
+  background-color: gray;
+  color: white;
+}
+
+/* Shows the menu when hovering */
+#monthWidget:hover #monthMenu {
+  display: block;
+}

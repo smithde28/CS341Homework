@@ -1,0 +1,151 @@
+<!-- HTML Cheesecake, Created by Derric Smith -->
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Reference to CSS -->
+<link rel="stylesheet" href="stylesheets/smithde28.css">
+
+</head>
+<body>
+
+<!-- Top Heading -->
+<h1><b>Cheesecake Order Form</b></h1>
+
+<!-- Cheesecake Image -->
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg/1200px-Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg"
+     width="200"
+     height="180">
+
+<p>Quantity Topping</p>
+<form id="orderForm" onsubmit="return submission();">
+
+<!-- Choice of amount of toppings -->
+<table>
+  <tr>
+    <td>
+      <select id="amount">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </td>
+
+<!-- Choice of either Plain, Cherry, or Chocolate -->
+    <td>
+        <input type="radio" id="Plain" name="topping" value="Plain">
+        <label for="Plain">Plain</label><br>
+
+        <input type="radio" id="Cherry" name="topping" value="Cherry">
+        <label for="Cherry">Cherry</label><br>
+
+        <input type="radio" id="Chocolate" name="topping" value="Chocolate">
+        <label for="Chocolate">Chocolate</label><br>
+    </td>
+  </tr>
+</table>
+
+<!-- Textbox for entering special instructions -->
+<label for="notes">Notes:</label><br>
+<textarea id="notes"
+          placeholder="Enter any special instructions here."
+          name="notes"
+          rows="4"
+          cols="69">
+</textarea>
+
+<br><br>
+
+<!-- Order Button -->
+<input id="orderButton"
+       type="submit"
+       value="Order">
+
+</form>
+
+<!-- JS code for order button and month widget, most of this is based off existing code from w3schools.com. -->
+<script>
+
+/* Function that alerts you if "vegan" is included, says your order is placed if not. */
+function submission()
+{
+  const notes = document.getElementById("notes").value.trim().toLowerCase();
+
+  if (notes.includes("vegan"))
+  {
+    alert("Warning: These cheesecakes contain dairy, proceed with caution!");
+  }
+  else
+  {
+    /* Gets the id's of each element */
+    const element1 = document.getElementById("notes"); 
+    const element2 = document.getElementById("orderForm"); 
+    const element3 = document.getElementById("amount"); 
+    const element4 = document.getElementById("orderButton"); 
+    
+    /* Removes elements */
+    element1.remove(); 
+    element2.remove();  
+    element3.remove(); 
+    element4.remove();
+
+    alert("Your order has been placed!");
+  }
+
+  return false;
+}
+
+/* Gets id's of month menu items */
+const currentMonth = document.getElementById("currentMonth");
+const menu = document.getElementById("monthMenu");
+const months = document.getElementsByClassName("month");
+
+/* Open menu */
+currentMonth.onclick = function ()
+{
+  menu.style.display = "block";
+};
+
+/* Select month */
+for (let i = 0; i < months.length; i++)
+{
+  months[i].onclick = function ()
+  {
+    currentMonth.innerHTML = this.innerHTML;
+    menu.style.display = "none";
+  };
+}
+</script>
+
+/* Set up for the month widget, also stores the months you can select (Jan-Dec) */
+<h3>
+  Orders for
+  <span id="monthWidget">
+    <span id="currentMonth">Jan</span>
+    <div id="monthMenu">
+      <div class="month">Jan</div>
+      <div class="month">Feb</div>
+      <div class="month">Mar</div>
+      <div class="month">Apr</div>
+      <div class="month">May</div>
+      <div class="month">Jun</div>
+      <div class="month">Jul</div>
+      <div class="month">Aug</div>
+      <div class="month">Sep</div>
+      <div class="month">Oct</div>
+      <div class="month">Nov</div>
+      <div class="month">Dec</div>
+    </div>
+  </span>
+</h3>
+
+<!-- List of amount of orders -->
+<ul>
+  <li>11 cherry</li>
+  <li>17 chocolate</li>
+  <li>31 plain</li>
+</ul>
+
+</body>
+</html>
