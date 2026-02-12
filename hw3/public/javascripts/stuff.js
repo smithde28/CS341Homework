@@ -1,13 +1,8 @@
 // CS341 Homework
 // Created by Derric Smith (Some code created by Martin Cenek)
 
-eventHandler = submission(event)
-{
-  /* do stuff */
-}
-
 /* Function that alerts you if "vegan" is included, says your order is placed if not. */
-$function submission()
+function submission()
 {
   const notes = document.getElementById("notes").value.trim().toLowerCase();
 
@@ -35,23 +30,42 @@ $function submission()
   return false;
 }
 
-/* Gets id's of month menu items */
-const currentMonth = document.getElementById("currentMonth");
-const menu = document.getElementById("monthMenu");
-const months = document.getElementsByClassName("month");
-
-/* Open menu */
-currentMonth.onclick = function ()
+/* Function that updates the list of orders */
+function updateOrders(orders)
 {
-  menu.style.display = "block";
-};
+  let output = '<ul>';
 
-/* Select month */
-for (let i = 0; i < months.length; i++)
-{
-  months[i].onclick = function ()
+  for (let i = 0; i < orders.length; i++)
   {
-    currentMonth.innerHTML = this.innerHTML;
-    menu.style.display = "none";
-  };
+    output += `<li>${orders[i].quantity} ${orders[i].topping}</li>`;
+  }
+
+  output += '</ul>';
+
+  document.getElementById('orderList').innerHTML = output;
 }
+
+/* Wrapped in window.onload to fix month selection issue (not sure if this is actually needed, will test later) */
+window.onload = function () {
+
+  const currentMonth = document.getElementById("currentMonth");
+  const menu = document.getElementById("monthMenu");
+  const months = document.getElementsByClassName("month");
+
+  currentMonth.onclick = function () {
+    menu.style.display = "block";
+  };
+
+  // Changes the month selected
+  for (let i = 0; i < months.length; i++) {
+    months[i].onclick = function () {
+      currentMonth.innerHTML = this.innerHTML;
+      menu.style.display = "none";
+
+      // Updates the orders
+      $.post('/orders', function (data) {
+        updateOrders(data);
+      });
+    };
+  }
+};

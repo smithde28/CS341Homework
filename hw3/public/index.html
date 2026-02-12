@@ -64,10 +64,7 @@
 
 </form>
 
-<!-- JS code for order button and month widget, most of this is based off existing code from w3schools.com. -->
-<script src ="javascripts/stuff.js"></script>
-
-/* Set up for the month widget, also stores the months you can select (Jan-Dec) */
+<!-- Set up for the month widget, also stores the months you can select (Jan-Dec) -->
 <h3>
   Orders for
   <span id="monthWidget">
@@ -90,11 +87,13 @@
 </h3>
 
 <!-- List of amount of orders -->
-<ul>
-  <li>11 cherry</li>
-  <li>17 chocolate</li>
-  <li>31 plain</li>
-</ul>
+<div id="orderList"></div>
+
+<!-- JQuery reference -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- JS code for order button and month widget, most of this is based off existing code from w3schools.com. -->
+<script src ="javascripts/stuff.js"></script>
 
 </body>
 </html>

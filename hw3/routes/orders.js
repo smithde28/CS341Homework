@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+// Get the orders
+router.post('/', (req, res) => {
     const orders = [
         {
             "topping": "cherry",
@@ -16,7 +17,9 @@ router.get('/', (req, res) => {
             "quantity": 3
         }
     ]
+    // Convert to JSON
     res.json(orders);
 });
 
+// Export the orders
 module.exports = router;
